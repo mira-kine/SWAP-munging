@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemon();
+      const data = await getPokemon(query);
       setPokemon(data.results);
       setTimeout(() => {
         setLoading(false);
@@ -20,7 +20,7 @@ function App() {
     if (loading) {
       fetchData();
     }
-  }, [loading]);
+  }, [loading, query]);
 
   return (
     <div className="App">
@@ -28,8 +28,8 @@ function App() {
       {loading && <span className="loader">!</span>}
       {!loading && (
         <>
-          <UserInput />
-          <PokeList {...{ pokemon }} />
+          <UserInput query={query} setQuery={setQuery} setLoading={setLoading} />
+          <PokeList pokemon={pokemon} />
         </>
       )}
     </div>

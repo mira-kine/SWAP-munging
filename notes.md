@@ -31,12 +31,13 @@
 - [x] useState to mount and setState for rendering
 - [x] create loading state so that state only loads when results have been fetched
 - [ ] ascending, descending, type
-- [ ] add URL search params to your services component
-  - [ ] pass the query through as a param, then make a const params = new URLSearchParams(); - [ ] set it using the const name (in this case you can say params) params.set('pokemon', query)
+- [x] add URL search params to your services component
+  - [ ] pass the query through as a param, then make a const params = new URLSearchParams(
+    - [ ] set it using the const name (in this case you can say params) params.set('pokemon', query)
   - [ ] using template literal, append to the URL with ${params.toString()} so that whatever you get from search query -> params -> stringified to match URL search params
 
 * build out components
   - [x] PokeList
-  - [ ] UserInput
+  - [x] UserInput
 
 - [ ] set a button onClick event to setLoading
