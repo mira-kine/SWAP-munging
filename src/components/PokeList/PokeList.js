@@ -1,6 +1,11 @@
 import React from 'react';
-import { useEffect } from 'react';
 
-export default function PokeList() {
-  return <div></div>;
+export default function PokeList({ pokemon }) {
+  return (
+    <div>
+      {pokemon.map((poke) => (
+        <p key={poke.id}>{poke.pokemon}</p>
+      ))}
+    </div>
+  );
 }

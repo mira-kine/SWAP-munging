@@ -1,6 +1,7 @@
 import './App.css';
 import { getPokemon } from './services/pokemon';
 import { useEffect, useState } from 'react';
+import PokeList from './components/PokeList/PokeList';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -15,14 +16,20 @@ function App() {
         setLoading(false);
       }, 2000);
     };
-    fetchData();
-  }, []);
+    if (loading) {
+      fetchData();
+    }
+  }, [loading]);
 
   return (
     <div className="App">
       <h1>Pokedex</h1>
       {loading && <span className="loader">!</span>}
-      {!loading && pokemon.map((poke) => <p key={poke.id}>{poke.pokemon}</p>)}
+      {!loading && (
+        <>
+          <PokeList {...{ pokemon }} />
+        </>
+      )}
     </div>
   );
 }
