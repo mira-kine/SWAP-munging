@@ -5,12 +5,15 @@ import { useEffect, useState } from 'react';
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getPokemon();
       setPokemon(data.results);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     };
     fetchData();
   }, []);
@@ -18,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <h1>Pokedex</h1>
-      {loading && <h1 className="loading">Loading!</h1>}
+      {loading && <span className="loader">!</span>}
       {!loading && pokemon.map((poke) => <p key={poke.id}>{poke.pokemon}</p>)}
     </div>
   );
