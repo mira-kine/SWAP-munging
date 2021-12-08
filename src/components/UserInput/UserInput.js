@@ -1,7 +1,12 @@
 import React from 'react';
 import './UserInput.css';
 
-export default function UserInput({ query, setQuery, setLoading }) {
+export default function UserInput({ query, setQuery, setLoading, setPokemon }) {
+  const handleClick = () => {
+    setLoading(true);
+    setPokemon((prevState) => [...prevState]);
+  };
+
   return (
     <div>
       <div className="user-input">
@@ -13,7 +18,7 @@ export default function UserInput({ query, setQuery, setLoading }) {
             setQuery(e.target.value);
           }}
         ></input>
-        <button className="button" onClick={() => setLoading(true)}>
+        <button className="button" onClick={handleClick}>
           Search
         </button>
       </div>
