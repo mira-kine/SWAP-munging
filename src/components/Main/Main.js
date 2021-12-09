@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getPokemon } from '../../services/pokemon';
+import { getPokemon, getTypes } from '../../services/pokemon';
 import PokeList from '../PokeList/PokeList';
 import UserInput from '../UserInput/UserInput';
 
@@ -10,12 +10,14 @@ export default function Main() {
   const [query, setQuery] = useState('');
   const [page, setNextPage] = useState(1);
   const [order, setOrder] = useState('');
+  const [type, setType] = useState([]);
+  const [selectedType, setSelectedType] = useState('all');
 
   useEffect(() => {
     let timer;
     const fetchData = async () => {
-      const data = await getPokemon(query, page, order);
-      setPokemon([...data.results]);
+      const data = await getPokemon(query, page, order, selectedType);
+      setPokemon(data.results);
       timer = setTimeout(() => {
         setLoading(false);
       }, 2000);
@@ -26,7 +28,18 @@ export default function Main() {
     return () => {
       clearInterval(timer);
     };
-  }, [loading, query, page, order]);
+  }, [loading, query, page, order, selectedType]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getTypes();
+      setType(data);
+      setLoading(false);
+    };
+    if (loading) {
+      fetchData();
+    }
+  }, [loading]);
 
   return (
     <div className="Main">
@@ -40,6 +53,9 @@ export default function Main() {
             setLoading={setLoading}
             setPokemon={setPokemon}
             setOrder={setOrder}
+            type={type}
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
           />
           <PokeList pokemon={pokemon} setNextPage={setNextPage} setLoading={setLoading} />
         </>
