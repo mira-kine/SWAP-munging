@@ -8,7 +8,7 @@ export default function Main() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
+  const [page, setNextPage] = useState(1);
   const [order, setOrder] = useState('');
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function Main() {
             setPokemon={setPokemon}
             setOrder={setOrder}
           />
-          <PokeList pokemon={pokemon} setPage={setPage} setLoading={setLoading} />
+          <PokeList pokemon={pokemon} setNextPage={setNextPage} setLoading={setLoading} />
         </>
       )}
     </div>

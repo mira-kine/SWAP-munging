@@ -1,9 +1,13 @@
 .poke-card {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   align-content: center;
+  border: 50px;
+  color: black;
+  font-family: 'VT323', monospace;
 }
 
 .next {
@@ -16,11 +20,8 @@ img {
   width: 100px;
 }
 
-.next {
+.next,
+.previous {
   margin: 10px;
   height: 25px;
-}
-
-main {
-  font-family: 'VT323', monospace;
 }
