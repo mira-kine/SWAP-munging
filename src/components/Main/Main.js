@@ -20,7 +20,7 @@ export default function Main() {
       setPokemon(data.results);
       timer = setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 1500);
     };
     if (loading) {
       fetchData();
@@ -34,17 +34,14 @@ export default function Main() {
     const fetchData = async () => {
       const data = await getTypes();
       setType(data);
-      setLoading(false);
     };
-    if (loading) {
-      fetchData();
-    }
-  }, [loading]);
+    fetchData();
+  }, []);
 
   return (
-    <div className="Main">
+    <div className="main">
       <h1>Pokedex</h1>
-      {loading && <span className="loader">!</span>}
+      {loading && <span className="loader"></span>}
       {!loading && (
         <>
           <UserInput

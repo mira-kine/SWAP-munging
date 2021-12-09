@@ -1,6 +1,6 @@
 import React from 'react';
 import './PokeList.css';
-// import { useState, useEffect } from 'react';
+import 'animate.css';
 
 export default function PokeList({ pokemon, setLoading, setNextPage }) {
   const handleNext = () => {
@@ -20,7 +20,7 @@ export default function PokeList({ pokemon, setLoading, setNextPage }) {
       <button className="previous" onClick={handlePrev}>
         Previous Page
       </button>
-      <div className="container">
+      <div className="animate__animated animate__fadeInDown animate__slower">
         <div>
           {pokemon.map((poke) => (
             <div key={poke.id} className="poke-card">
