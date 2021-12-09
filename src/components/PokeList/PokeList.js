@@ -17,6 +17,9 @@ export default function PokeList({ pokemon, setLoading, setNextPage }) {
       <button className="next" onClick={handleNext}>
         Next Page
       </button>
+      <button className="previous" onClick={handlePrev}>
+        Previous Page
+      </button>
       <div className="container">
         <div>
           {pokemon.map((poke) => (
