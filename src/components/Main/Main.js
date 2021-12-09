@@ -9,11 +9,12 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [order, setOrder] = useState('');
 
   useEffect(() => {
     let timer;
     const fetchData = async () => {
-      const data = await getPokemon(query, page);
+      const data = await getPokemon(query, page, order);
       setPokemon([...data.results]);
       timer = setTimeout(() => {
         setLoading(false);
@@ -25,7 +26,7 @@ export default function Main() {
     return () => {
       clearInterval(timer);
     };
-  }, [loading, query, page]);
+  }, [loading, query, page, order]);
 
   return (
     <div className="App">
@@ -38,6 +39,7 @@ export default function Main() {
             setQuery={setQuery}
             setLoading={setLoading}
             setPokemon={setPokemon}
+            setOrder={setOrder}
           />
           <PokeList pokemon={pokemon} setPage={setPage} setLoading={setLoading} />
         </>

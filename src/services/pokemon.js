@@ -1,7 +1,9 @@
-export async function getPokemon(query, page) {
+export async function getPokemon(query, page, order) {
   const params = new URLSearchParams();
   params.set('pokemon', query);
   params.set('page', page);
+  params.set('sort', 'pokemon');
+  params.set('direction', order);
   const response = await fetch(
     `https://pokedex-alchemy.herokuapp.com/api/pokedex?${params.toString()}`
   );

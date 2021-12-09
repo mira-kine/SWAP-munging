@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserInput.css';
 
-export default function UserInput({ query, setQuery, setLoading }) {
+export default function UserInput({ query, setQuery, setLoading, order, setOrder }) {
   return (
     <div>
       <div className="user-input">
@@ -13,6 +13,10 @@ export default function UserInput({ query, setQuery, setLoading }) {
             setQuery(e.target.value);
           }}
         ></input>
+        <select value={order} onChange={(e) => setOrder(e.target.value)}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
         <button className="button" onClick={() => setLoading(true)}>
           Search
         </button>

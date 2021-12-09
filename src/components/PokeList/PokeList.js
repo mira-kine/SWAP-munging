@@ -11,6 +11,9 @@ export default function PokeList({ pokemon, setLoading, setPage }) {
   return (
     <div className="container">
       <div className="poke-card">
+        <button className="next" onClick={handleClick}>
+          Next Page
+        </button>
         {pokemon.map((poke) => (
           <p key={poke.id}>
             <span>{poke.pokemon}</span>
