@@ -29,7 +29,7 @@ export default function Main() {
   }, [loading, query, page, order]);
 
   return (
-    <div className="App">
+    <div className="Main">
       <h1>Pokedex</h1>
       {loading && <span className="loader">!</span>}
       {!loading && (
