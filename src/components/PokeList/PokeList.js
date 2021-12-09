@@ -2,7 +2,12 @@ import React from 'react';
 import './PokeList.css';
 // import { useState, useEffect } from 'react';
 
-export default function PokeList({ pokemon }) {
+export default function PokeList({ pokemon, setLoading, setPage }) {
+  const handleClick = () => {
+    setLoading(true);
+    setPage((prevState) => ++prevState);
+  };
+
   return (
     <div className="container">
       <div className="poke-card">
@@ -13,6 +18,9 @@ export default function PokeList({ pokemon }) {
             <img src={poke.url_image} />
           </p>
         ))}
+        <button className="next" onClick={handleClick}>
+          Next Page
+        </button>
       </div>
     </div>
   );

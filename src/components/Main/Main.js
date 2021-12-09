@@ -8,19 +8,24 @@ export default function Main() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
+    let timer;
     const fetchData = async () => {
-      const data = await getPokemon(query);
+      const data = await getPokemon(query, page);
       setPokemon([...data.results]);
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setLoading(false);
       }, 2000);
     };
     if (loading) {
       fetchData();
     }
-  }, [loading, query]);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [loading, query, page]);
 
   return (
     <div className="App">
@@ -34,7 +39,7 @@ export default function Main() {
             setLoading={setLoading}
             setPokemon={setPokemon}
           />
-          <PokeList pokemon={pokemon} />
+          <PokeList pokemon={pokemon} setPage={setPage} setLoading={setLoading} />
         </>
       )}
     </div>
