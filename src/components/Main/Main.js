@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getPokemon, getTypes } from '../../services/pokemon';
 import PokeList from '../PokeList/PokeList';
 import UserInput from '../UserInput/UserInput';
+import './Main.css';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
@@ -40,7 +41,7 @@ export default function Main() {
 
   return (
     <div className="main">
-      <h1>Pokedex</h1>
+      <h1 className="header">Pokedex</h1>
       {loading && <span className="loader"></span>}
       {!loading && (
         <>

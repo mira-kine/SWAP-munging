@@ -15,6 +15,7 @@ export default function UserInput({
     <div>
       <div className="user-input">
         <input
+          className="search"
           type="text"
           placeholder="Search Pokemon"
           value={query}
@@ -22,20 +23,26 @@ export default function UserInput({
             setQuery(e.target.value);
           }}
         ></input>
-        <select value={order} onChange={(e) => setOrder(e.target.value)}>
+
+        <select className="direction" value={order} onChange={(e) => setOrder(e.target.value)}>
           <option>Choose Direction</option>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
-        <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
-          <option value="all">All</option>
+
+        <select
+          className="type"
+          value={selectedType}
+          onChange={(e) => setSelectedType(e.target.value)}
+        >
+          <option value="all">All Types</option>
           {type.map((item) => (
             <option key={item} value={item}>
               {item}
             </option>
           ))}
         </select>
-        <button className="button" onClick={() => setLoading(true)}>
+        <button className="search-button" onClick={() => setLoading(true)}>
           Search
         </button>
       </div>

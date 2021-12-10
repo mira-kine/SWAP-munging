@@ -1,7 +1,18 @@
-body {
+.user-input {
   font-family: 'VT323', monospace;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  margin: 10px;
 }
 
 button {
   font-family: 'VT323', monospace;
+}
+
+.type,
+.direction,
+.search,
+.search-button {
+  margin: 10px;
 }
