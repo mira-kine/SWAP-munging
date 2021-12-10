@@ -113,3 +113,8 @@
     transform: rotate(10deg);
   }
 }
+
+.background {
+  background-size: contain;
+  background-repeat: no-repeat;
+}

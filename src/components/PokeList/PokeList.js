@@ -21,7 +21,7 @@ export default function PokeList({ pokemon, setLoading, setNextPage }) {
         Previous Page
       </button>
       <div className="animate__animated animate__fadeInDown animate__slow">
-        <div>
+        <div className="poke-card-container">
           {pokemon.map((poke) => (
             <div key={poke.id} className="poke-card">
               <img src={poke.url_image} />
@@ -33,12 +33,6 @@ export default function PokeList({ pokemon, setLoading, setNextPage }) {
               <span>hp: {poke.hp}</span>
             </div>
           ))}
-          <button className="next" onClick={handleNext}>
-            Next Page
-          </button>
-          <button className="previous" onClick={handlePrev}>
-            Previous Page
-          </button>
         </div>
       </div>
     </>

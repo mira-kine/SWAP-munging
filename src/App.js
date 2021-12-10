@@ -1,11 +1,12 @@
 import './App.css';
 import Main from './components/Main/Main';
+import background from './background.jpeg';
 
 function App() {
   return (
-    <div className="App">
+    <main className="background" style={{ backgroundImage: `url(${background})` }}>
       <Main />
-    </div>
+    </main>
   );
 }
 
