@@ -4,6 +4,8 @@ import { getPokemon, getTypes } from '../../services/pokemon';
 import PokeList from '../PokeList/PokeList';
 import UserInput from '../UserInput/UserInput';
 import './Main.css';
+import Graph from '../Graph/Graph';
+import { getCount } from '../../services/pokemon';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
@@ -13,6 +15,7 @@ export default function Main() {
   const [order, setOrder] = useState('');
   const [type, setType] = useState([]);
   const [selectedType, setSelectedType] = useState('all');
+  const [count, setCount] = useState([]);
 
   useEffect(() => {
     let timer;
@@ -39,6 +42,16 @@ export default function Main() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCount();
+      setCount(data);
+    };
+    if (loading) {
+      fetchData();
+    }
+  }, [count, setCount, loading]);
+
   return (
     <div className="main">
       <h1 className="header">Pokedex</h1>
@@ -58,6 +71,7 @@ export default function Main() {
           <PokeList pokemon={pokemon} setNextPage={setNextPage} setLoading={setLoading} />
         </>
       )}
+      <Graph count={count} pokemon={pokemon} type={type} />
     </div>
   );
 }
